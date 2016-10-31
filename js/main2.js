@@ -60,17 +60,31 @@
  				var textito = textarea.value;
  				var parrafo = document.createElement("p");
  				var texta= document.createTextNode(textito);
+ 				//parrafo.id = "loques" + (newDate()).getTime(); 
+
 
  				parrafo.draggable = true;
 
-				parrafo.ondragstart = function(){
+				parrafo.ondragstart = function(e){
  				parrafo.style.color = "red";
+ 				botonbebe.style.display ="none";
+ 				console.log()
+ 				e.dataTransfer.setData("content", e.target.id);
  				}
 
 				parrafo.ondragenter  = function(){
  				parrafo.style.color = "green";
  				}
 
+ 				div.ondragover = function(e){
+ 					e.preventDefault();
+ 				}
+ 				div.ondrop = function(e){
+ 					var datos = e.dataTransfer.getData("content");
+ 					e.target.appendChild(document.getElementById(datos));
+ 				}
+
+ 				
 
 
  				parrafo.appendChild(texta);
@@ -78,10 +92,23 @@
  				botoncito.style.display ="none";
  				textarea.style.display ="none";
 
+ 				var botonbebe = document.createElement("button");
+ 			botonbebe.className ="btn btn-danger";
+ 			botonbebe.innerHTML = "X";
+ 			div.appendChild(botonbebe);
+
+ 			botonbebe.onclick = function(){
+ 				botonbebe.parentNode.removeChild(botonbebe);
+ 				parrafo.parentNode.removeChild(parrafo);
+
 
  			};
 
  		};
+
+
+ 			}
+
 
 
 
