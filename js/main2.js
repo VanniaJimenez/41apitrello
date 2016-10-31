@@ -43,13 +43,13 @@
  			div.appendChild(textarea);
  			textarea.className = "bloque texxta mt";
 
- 			function drop(textarea) {
+ 			/*function drop(textarea) {
 		    textarea.preventDefault();
 
 		    var data = textarea.dataTransfer.getData("parrafo");
     		textarea.target.appendChild(document.getElementById(data));
 
-			}
+			}*/
 
  			var botoncito = document.createElement("button");
  			div.appendChild(botoncito);
@@ -60,7 +60,7 @@
  				var textito = textarea.value;
  				var parrafo = document.createElement("p");
  				var texta= document.createTextNode(textito);
- 				//parrafo.id = "loques" + (newDate()).getTime(); 
+ 				parrafo.id = "loques" + (new Date()).getTime(); 
 
 
  				parrafo.draggable = true;
@@ -68,8 +68,7 @@
 				parrafo.ondragstart = function(e){
  				parrafo.style.color = "red";
  				botonbebe.style.display ="none";
- 				console.log()
- 				e.dataTransfer.setData("content", e.target.id);
+ 				e.dataTransfer.setData("text",parrafo.id );
  				}
 
 				parrafo.ondragenter  = function(){
@@ -80,8 +79,10 @@
  					e.preventDefault();
  				}
  				div.ondrop = function(e){
- 					var datos = e.dataTransfer.getData("content");
- 					e.target.appendChild(document.getElementById(datos));
+ 					var id = e.dataTransfer.getData("text");
+ 					var elemento = document.getElementById(id);
+ 					div.appendChild(elemento);
+
  				}
 
  				
