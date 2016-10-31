@@ -1,0 +1,17 @@
+.linea {
+	display: inline-block;
+}
+
+.bloque {
+	display: block;
+}
+
+.texxta {
+	max-width: 50%;
+	min-width: 30%;
+
+}
+
+.mt {
+	margin-top: 5%;
+}
